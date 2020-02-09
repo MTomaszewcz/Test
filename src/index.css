@@ -6,6 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: #425b6c;
 }
 
 code {
@@ -81,7 +83,7 @@ li {
 /*////////////////////////////////////////////////////////////////////////////////////*/
 
 .arr {
-  height: 1000px;
+  height: 1200px; /*1000*/
   background: #425b6c;
 }
 

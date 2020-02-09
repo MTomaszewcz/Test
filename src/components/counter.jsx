@@ -1,21 +1,35 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    count: 1,
-    tags: ["tag1", "tag2", "tag3"]
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      tags: ["tag1", "tag2", "tag3"]
+    };
+  }
 
   render() {
     return (
-      <div>
-        <span style={{ fontSize: 20 }} className={this.getBadgeClasses()}>
+      <div style={{ background: "#425b6c" }}>
+        <span
+          style={{ fontSize: 20, width: "60px" }}
+          className={this.getBadgeClasses()}
+        >
           {this.formatCount()}
         </span>
-        <button className="btn btn-secondary btn-sm">increment</button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={this.props.inc}
+        >
+          increment
+        </button>
+
+        {this.decButton()}
 
         <ul>
-          {this.state.tags.map(tag => (
+          {this.state.tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
         </ul>
@@ -25,13 +39,31 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.props.cnt === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
+    //const { count } = this.state;
+    const a = this.props.cnt;
+    return a === 0 ? "Zero" : a;
+  }
+
+  decButton() {
+    let decStyle = {
+      display: this.props.cnt === 0 && "none"
+    };
+
+    return (
+      <buton
+        type="button"
+        className="btn btn-warning"
+        style={decStyle}
+        onClick={this.props.dec}
+      >
+        decrement
+      </buton>
+    );
   }
 }
 
